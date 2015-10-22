@@ -1,0 +1,41 @@
+NOTE: I used Ubuntu 12.04 - 32 bit. I have also installed ROS Groovy which was the 6th ROS distribution release.
+
+Instructions for Installing ROS GROOVY:
+Original Link: http://wiki.ros.org/groovy/Installation/Ubuntu
+
+1) Configure your Ubuntu repositories to allow "restricted," "universe," and "multiverse."
+
+See https://help.ubuntu.com/community/Repositories/Ubuntu to do this.
+
+2) Setup your computer to accept software from packages.ros.org. For Ubuntu 12.04 (Precise). To do this, in the terminal, type:
+
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
+
+3) Set up your keys
+
+wget http://packages.ros.org/ros.key -O - | sudo apt-key add –
+
+4) Check your Debian package is up to date
+
+sudo apt-get update
+
+5) For the full installation [(recommended as it provides Rviz (visualization tool of ROS) and other desired features]
+
+sudo apt-get install ros-groovy-desktop-full
+
+6) Initialize rosdep – before you can use ROS, you will need to initialize rosdep. 
+
+sudo rosdep init
+
+rosdep update
+
+7) You would want your environment variables to be automatically added to your bash session every time a new shell is launched. 
+
+echo "source /opt/ros/groovy/setup.bash" >> ~/.bashrc
+
+source ~/.bashrc
+
+
+8) Ensure you download rosinstall – it will allow you to download ROS packages with one command.
+
+sudo apt-get install python-rosinstall
