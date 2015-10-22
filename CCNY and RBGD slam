@@ -1,0 +1,45 @@
+Instruction to Install the CCNY SLAM:
+1.	Extract the ccny_rgbd_tools to your home folder.
+2.	Add the path to this folder in the ~/.bashrc file
+sudo gedit ~/.bashrc
+Add the following line to the end of this file
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$HOME/ccny_rgbd_tools
+3. Install all the dependencies:
+rosdep install ccny_rgbd_slam
+Alternatively, install it the dependencies manually 
+
+sudo apt-get install libsuitesparse-dev
+4. Delete all the CMakeCache.txt in the /home/ccny_rgbd_slam folder
+cd ~/ccny_rgbd_tools/
+find -name CMakeCache.txt -delete
+5. rosmake the folder
+rosmake ccny_rgbd_slam
+
+Note:
+If there is compilation error then remove libg20:
+sudo apt-get remove ros-groovy-libg20
+rosmake the folder again
+rosmake ccny_rgbd_slam
+For the usage instruction see the following link:
+
+
+Instruction to Run CCNY SLAM:
+
+roslaunch ccny_openni_launch openni.launch
+
+roslaunch ccny_rgbd vo+mapping.launch
+rosrun rviz rviz
+
+After this from the Rviz window open the vo+mapping.vcg (.vcg and .rviz is the extension of an Rviz configuration file) Configuration file. This file is included in the folder.
+
+Instruction to Run RGBD SLAM:  
+
+roslaunch rgbdslam kinect+rgbdslam.launch
+
+Alternatively, you can start the openni nodes and RGBDSLAM separately,
+
+roslaunch openni_launch openni.launch
+
+rosrun rgbdslam rgbdslam
+
+Note: Press Space to start the SLAM
