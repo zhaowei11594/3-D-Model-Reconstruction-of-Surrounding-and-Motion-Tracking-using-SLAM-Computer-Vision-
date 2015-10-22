@@ -1,0 +1,34 @@
+Instructions for Installing Kinect drivers: 
+
+1.) After successful installation of ROS groovy do the following steps:
+ 
+sudo apt-get install ros-groovy-openni-*
+
+To check if the drivers were Installed properly:
+
+Option A: Inside ROS I.e using ROS
+
+Connect the Kinect to the USB port and launch the following commands in  the terminal
+
+roslaunch openni_launch openni.launch
+
+rosrun rviz rviz
+
+Once Rviz is running (the visualization tool of ROS)
+
+–	The default Rviz file will start automatically and you'll be able to see the Point clouds.
+
+Note:
+The default configuration file(its has .rviz extension)  is already stored in the Sony Vaio i7 laptopp given to me.
+
+–	If in case the file doesn't startup, do the following things:
+
+Under Global Option, Fixed Frame should be at /camera_rgb_frame topic
+Select the Add button and add the PointCloud2 option. This PointCloud2 option should have /camera/depth_registered/points as its topic. Also change the Color Transformation to RGB8 to see the colored point clouds.
+
+Option B: Outside ROS I.e not using ROS
+
+sudo apt-get install freenect
+
+freenect-glview
+
